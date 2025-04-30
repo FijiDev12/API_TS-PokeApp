@@ -12,3 +12,7 @@ const sslOptions = {
 https.createServer(sslOptions, app).listen(PORT, () => {
     console.log(`🚀 Server running on https://0.0.0.0:${PORT}`);
 });
+
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// })
