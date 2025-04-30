@@ -9,6 +9,6 @@ const sslOptions = {
     cert: fs.readFileSync('/etc/letsencrypt/live/api-psp-ext.festivalcasino.com/fullchain.pem')
 }
 
-https.createServer(sslOptions, app).listen(443, () => {
+https.createServer(sslOptions, app).listen(PORT, () => {
     console.log(`🚀 Server running on https://0.0.0.0:${PORT}`);
 });
