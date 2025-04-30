@@ -5,6 +5,9 @@ export const validatePaymentData = (data: any): string | null => {
     if (!data.transactionID || data.transactionID.trim() === "") {
         return "Transaction ID is required and cannot be empty.";
     }
+    if (!data.transactionType || data.transactionType.trim() === "") {
+        return "Transaction type is required and cannot be empty.";
+    }
     if (!data.account || data.account.trim() === "") {
         return "Account no. is required and cannot be empty.";
     }
