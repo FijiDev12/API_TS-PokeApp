@@ -106,3 +106,79 @@ export const generateWithdrawal = async (req: Request, res: Response): Promise<v
         });
     }
 };
+
+export const generatePayment2 = async (req: Request, res: Response): Promise<void> => {
+    const { body } = req;
+    
+    try {
+        if (!body || !body.data) {
+            res.status(400).json({
+                code: 400,
+                message: 'Bad request. Missing "data" field.',
+            });
+            return;
+        }
+
+        const decryptedText = aesDecrypt(body.data);
+        const parsedData = JSON.parse(decryptedText);
+        
+        const validationError = validatePaymentData(parsedData);
+        if (validationError) {
+            res.status(400).json({
+                code: 400,
+                message: validationError,
+            });
+            return;
+        }
+
+        res.status(200).json({
+            code: 200,
+            message: `${process.env.PREPROD_PAY_URL}/payment/${body.data}`
+        });
+    } catch (error) {
+        console.error('generatePayment error:', error);
+
+        res.status(500).json({
+            code: 500,
+            message: 'Internal server error.',
+        });
+    }
+};
+
+export const generateWithdrawal2 = async (req: Request, res: Response): Promise<void> => {
+    const { body } = req;
+    
+    try {
+        if (!body || !body.data) {
+            res.status(400).json({
+                code: 400,
+                message: 'Bad request. Missing "data" field.',
+            });
+            return;
+        }
+
+        const decryptedText = aesDecrypt(body.data);
+        const parsedData = JSON.parse(decryptedText);
+        
+        const validationError = validatePaymentData(parsedData);
+        if (validationError) {
+            res.status(400).json({
+                code: 400,
+                message: validationError,
+            });
+            return;
+        }
+
+        res.status(200).json({
+            code: 200,
+            message: `${process.env.PREPROD_PAY_URL}/payout/${body.data}`
+        });
+    } catch (error) {
+        console.error('generateWithdrawal error:', error);
+
+        res.status(500).json({
+            code: 500,
+            message: 'Internal server error.',
+        });
+    }
+};
