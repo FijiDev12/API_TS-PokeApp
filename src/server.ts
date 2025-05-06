@@ -5,8 +5,8 @@ import https from 'https';
 const PORT = process.env.PORT || 8502;
 
 const sslOptions = {
-    key: fs.readFileSync('/etc/letsencrypt/live/api-psp-ext.festivalcasino.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/api-psp-ext.festivalcasino.com/fullchain.pem')
+    key: fs.readFileSync('/etc/letsencrypt/archive/api-psp-ext.festivalcasino.com/privkey2.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/archive/api-psp-ext.festivalcasino.com/fullchain2.pem')
 }
 
 https.createServer(sslOptions, app).listen(PORT, () => {
