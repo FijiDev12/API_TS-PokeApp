@@ -35,6 +35,9 @@ export const validatePaymentData = (data: any): string | null => {
     if (!data.site || data.site === "") {
         return "Site URL is required and cannot be empty.";
     }
+    if (!data.username || data.username === "") {
+        return "Username is required and cannot be empty.";
+    }
 
     return null;
 };
