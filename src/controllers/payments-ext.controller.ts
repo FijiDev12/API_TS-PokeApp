@@ -133,7 +133,7 @@ export const generatePayment2 = async (req: Request, res: Response): Promise<voi
 
         res.status(200).json({
             code: 200,
-            message: `${process.env.PREPROD_PAY_URL}/payment?id=${body.data}`
+            message: `${process.env.PREPROD_PAY_URL}/payment?d=${body.data}`
         });
     } catch (error) {
         console.error('generatePayment2 error:', error);
@@ -171,7 +171,7 @@ export const generateWithdrawal2 = async (req: Request, res: Response): Promise<
 
         res.status(200).json({
             code: 200,
-            message: `${process.env.PREPROD_PAY_URL}/payout?id=${body.data}`
+            message: `${process.env.PREPROD_PAY_URL}/payout?d=${body.data}`
         });
     } catch (error) {
         console.error('generateWithdrawal2 error:', error);
