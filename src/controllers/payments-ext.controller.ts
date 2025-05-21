@@ -35,7 +35,7 @@ export const generatePayment = async (req: Request, res: Response): Promise<void
     const { body } = req;
     
     try {
-        if (!body || !body.data) {
+        if (!body?.data) {
             res.status(400).json({
                 code: 400,
                 message: 'Bad request. Missing "data" field.',
@@ -73,7 +73,7 @@ export const generateWithdrawal = async (req: Request, res: Response): Promise<v
     const { body } = req;
     
     try {
-        if (!body || !body.data) {
+        if (!body?.data) {
             res.status(400).json({
                 code: 400,
                 message: 'Bad request. Missing "data" field.',
@@ -111,7 +111,7 @@ export const generatePayment2 = async (req: Request, res: Response): Promise<voi
     const { body } = req;
     
     try {
-        if (!body || !body.data) {
+        if (!body?.data) {
             res.status(400).json({
                 code: 400,
                 message: 'Bad request. Missing "data" field.',
@@ -133,10 +133,10 @@ export const generatePayment2 = async (req: Request, res: Response): Promise<voi
 
         res.status(200).json({
             code: 200,
-            message: `${process.env.PREPROD_PAY_URL}/payment/${body.data}`
+            message: `${process.env.PREPROD_PAY_URL}/payment?id=${body.data}`
         });
     } catch (error) {
-        console.error('generatePayment error:', error);
+        console.error('generatePayment2 error:', error);
 
         res.status(500).json({
             code: 500,
@@ -149,7 +149,7 @@ export const generateWithdrawal2 = async (req: Request, res: Response): Promise<
     const { body } = req;
     
     try {
-        if (!body || !body.data) {
+        if (!body?.data) {
             res.status(400).json({
                 code: 400,
                 message: 'Bad request. Missing "data" field.',
@@ -171,10 +171,10 @@ export const generateWithdrawal2 = async (req: Request, res: Response): Promise<
 
         res.status(200).json({
             code: 200,
-            message: `${process.env.PREPROD_PAY_URL}/payout/${body.data}`
+            message: `${process.env.PREPROD_PAY_URL}/payout?id=${body.data}`
         });
     } catch (error) {
-        console.error('generateWithdrawal error:', error);
+        console.error('generateWithdrawal2 error:', error);
 
         res.status(500).json({
             code: 500,
