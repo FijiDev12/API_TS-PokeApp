@@ -57,7 +57,7 @@ export const generatePayment = async (req: Request, res: Response): Promise<void
 
         res.status(200).json({
             code: 200,
-            message: `${process.env.PAY_URL}/payment/${body.data}`
+            message: `${process.env.PAY_URL}/payment?d=${body.data}`
         });
     } catch (error) {
         console.error('generatePayment error:', error);
@@ -95,7 +95,7 @@ export const generateWithdrawal = async (req: Request, res: Response): Promise<v
 
         res.status(200).json({
             code: 200,
-            message: `${process.env.PAY_URL}/payout/${body.data}`
+            message: `${process.env.PAY_URL}/payout?d=${body.data}`
         });
     } catch (error) {
         console.error('generateWithdrawal error:', error);
