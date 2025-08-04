@@ -1,5 +1,5 @@
 import express from 'express';
-import paymentRoutes from './routes/payments-ext.routes';
+import paymentRoutes from './routes/pokemon-ext.routes';
 
 const app = express();
 
